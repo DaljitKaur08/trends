@@ -9,7 +9,7 @@ function Product() {
 
     const [products, setProducts] = useState([]);
     const [category, setCategory] = useState('all');
-    const [sort, setSort] = useState('default');
+    const [sort, setSort] = useState('name-asc');
 
     useEffect(() => {
 
@@ -26,18 +26,39 @@ function Product() {
 
     let displayProducts = [...products];
 
+    // Filter
     if (category !== 'all') {
         displayProducts = displayProducts.filter(product =>
             product.category === category
         );
     }
 
-    if (sort === 'low-high') {
-        displayProducts.sort((a, b) => a.price - b.price);
+    // Sort by Name A-Z
+    if (sort === 'name-asc') {
+        displayProducts.sort((a, b) =>
+            a.title.localeCompare(b.title)
+        );
     }
 
+    // Sort by Name Z-A
+    if (sort === 'name-desc') {
+        displayProducts.sort((a, b) =>
+            b.title.localeCompare(a.title)
+        );
+    }
+
+    // Sort by Price Low to High
+    if (sort === 'low-high') {
+        displayProducts.sort((a, b) =>
+            a.price - b.price
+        );
+    }
+
+    // Sort by Price High to Low
     if (sort === 'high-low') {
-        displayProducts.sort((a, b) => b.price - a.price);
+        displayProducts.sort((a, b) =>
+            b.price - a.price
+        );
     }
 
     return (
