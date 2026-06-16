@@ -1,7 +1,7 @@
-function SortSection() {
+function SortSection(props) {
     return (
         <section className="sort-section">
-            <select>
+            <select onChange={(e) => props.setSort(e.target.value)}>
                 <option value="default">Sort Products</option>
                 <option value="low-high">Price Low to High</option>
                 <option value="high-low">Price High to Low</option>

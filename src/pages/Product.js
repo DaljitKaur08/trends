@@ -8,6 +8,8 @@ import ProductGrid from '../components/ProductGrid';
 function Product() {
 
     const [products, setProducts] = useState([]);
+    const [category, setCategory] = useState('all');
+    const [sort, setSort] = useState('default');
 
     useEffect(() => {
 
@@ -22,15 +24,31 @@ function Product() {
 
     }, []);
 
+    let displayProducts = [...products];
+
+    if (category !== 'all') {
+        displayProducts = displayProducts.filter(product =>
+            product.category === category
+        );
+    }
+
+    if (sort === 'low-high') {
+        displayProducts.sort((a, b) => a.price - b.price);
+    }
+
+    if (sort === 'high-low') {
+        displayProducts.sort((a, b) => b.price - a.price);
+    }
+
     return (
         <>
             <h2>Products</h2>
 
-            <FilterSection />
+            <FilterSection setCategory={setCategory} />
 
-            <SortSection />
+            <SortSection setSort={setSort} />
 
-            <ProductGrid products={products} />
+            <ProductGrid products={displayProducts} />
         </>
     );
 }
