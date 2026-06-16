@@ -7,6 +7,7 @@ function ProductGrid(props) {
                 props.products.map(product => (
                     <ProductCard
                         key={product.id}
+                        id={product.id}
                         title={product.title}
                         price={product.price}
                         image={product.image}
