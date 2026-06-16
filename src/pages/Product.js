@@ -1,8 +1,16 @@
-function Product (){
-    return(
-        <section>
-            <h2>Product Page</h2>
-        </section>
+import FilterSection from '../components/FilterSection';
+import SortSection from '../components/SortSection';
+
+function Product() {
+    return (
+        <>
+            <h2>Products</h2>
+
+            <FilterSection />
+
+            <SortSection />
+        </>
     );
 }
+
 export default Product;
