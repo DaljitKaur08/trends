@@ -1,4 +1,12 @@
+import { useNavigate } from 'react-router-dom';
+
 function ProductCard(props) {
+
+    const navigate = useNavigate();
+
+    function goToProduct() {
+        navigate(`/product/${props.id}`);
+    }
 
     function addToCart() {
 
@@ -9,11 +17,8 @@ function ProductCard(props) {
         );
 
         if (existingItem) {
-
             existingItem.quantity += 1;
-
         } else {
-
             cart.push({
                 id: props.id,
                 title: props.title,
@@ -21,7 +26,6 @@ function ProductCard(props) {
                 image: props.image,
                 quantity: 1
             });
-
         }
 
         localStorage.setItem(
@@ -35,9 +39,14 @@ function ProductCard(props) {
     return (
         <div className="product-card">
 
-            <img src={props.image} alt={props.title} />
+            {/* CLICKABLE AREA → goes to product detail page */}
+            <div onClick={goToProduct} style={{ cursor: 'pointer' }}>
 
-            <h3>{props.title}</h3>
+                <img src={props.image} alt={props.title} />
+
+                <h3>{props.title}</h3>
+
+            </div>
 
             <p>${props.price}</p>
 
