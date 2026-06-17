@@ -1,36 +1,16 @@
-/* =========================
-   NOT FOUND PAGE
-========================= */
-
-.not-found {
-    min-height: 70vh;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
+.notfound {
+  display: grid;
+  place-items: center;
+  min-height: 70vh;
+  text-align: center;
+  padding: 2rem;
 }
 
-.not-found h1 {
-    font-size: 8rem;
-    color: #4f46e5;
-    line-height: 1;
+.notfound h1 {
+  font-size: 6rem;
+  font-weight: 800;
 }
 
-.not-found h2 {
-    margin-top: 1rem;
-    font-size: 2rem;
-}
-
-.not-found p {
-    max-width: 500px;
-    margin: 1rem 0 2rem;
-    color: #666;
-    line-height: 1.7;
-}
-
-.not-found a {
-    text-decoration: none;
+.notfound p {
+  color: var(--muted);
 }

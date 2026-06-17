@@ -22,10 +22,19 @@ function Home() {
     }, []);
 
     return (
-        <>
-            <HeroBanner />
-            <ProductGrid products={products} />
-        </>
+        <main className="home-page">
+
+            <section className="hero-section">
+                <HeroBanner />
+            </section>
+
+            <section className="products-section">
+                <div className="container">
+                    <ProductGrid products={products} />
+                </div>
+            </section>
+
+        </main>
     );
 }
 
