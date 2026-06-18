@@ -187,9 +187,7 @@ button:hover,
     background: #219150;
 }
 
-/* =========================
-   SIMILAR PRODUCTS
-========================= */
+
 
 .similar-grid {
     display: grid;
@@ -221,6 +219,7 @@ button:hover,
     font-size: 13px;
     margin: 5px 0;
 }
+
 
 
 
