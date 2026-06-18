@@ -29,6 +29,14 @@ function Footer() {
                     </ul>
                 </div>
 
+                <div className="footer-section">
+                    <h3>Information</h3>
+                    <ul>
+                        <li>Privacy Policy</li>
+                        <li>Terms & Conditions</li>
+                        <li>Contact Us</li>
+                    </ul>
+                </div>
 
             </div>
 
