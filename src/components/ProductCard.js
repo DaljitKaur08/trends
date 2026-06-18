@@ -33,8 +33,9 @@ function ProductCard(props) {
             JSON.stringify(cart)
         );
 
-        alert('Added to Cart');
-    }
+window.dispatchEvent(
+    new Event("cartUpdated")
+);    }
 
     return (
         <div className="product-card">

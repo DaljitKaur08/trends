@@ -2,21 +2,27 @@ import { motion } from "framer-motion";
 
 function HeroBanner() {
     return (
-
-        // Framer Motion animation 
-
         <motion.section
             className="hero-banner"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            style={{
+                backgroundImage:
+                    "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('/images/herobanner.jpg')"
+            }}
+            initial={{ opacity: 8 }}
+            animate={{ opacity: 6 }}
+            transition={{ duration: 1.0 }}
         >
-            <h2>Trends</h2>
+            <div className="hero-content">
 
-            <p>
-                Discover Fashion, Jewelry and Electronics
-            </p>
+                <h2>Trends</h2>
 
+                <p>Fashion That Defines You</p>
+
+                <button className="shop-btn">
+                    Shop Now
+                </button>
+
+            </div>
         </motion.section>
     );
 }
