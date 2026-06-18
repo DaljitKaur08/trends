@@ -20,6 +20,15 @@ function Footer() {
                     </div>
                 </div>
 
+                <div className="footer-section">
+                    <h3>About</h3>
+                    <ul>
+                        <li>Our Story</li>
+                        <li>Careers</li>
+                        <li>Blog</li>
+                    </ul>
+                </div>
+
 
             </div>
 
