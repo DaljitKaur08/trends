@@ -220,6 +220,86 @@ button:hover,
     margin: 5px 0;
 }
 
+.footer {
+    background-color: #f4f4f2;
+    padding: 50px 0 0;
+    width: 100%;
+    font-family: 'Mulish', sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: auto;
+    gap: 40px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 220px;
+}
+
+.logo {
+    color: #911825;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.footer-section h3 {
+    color: #911825;
+    margin-bottom: 15px;
+}
+
+.footer-section p {
+    margin: 5px 0;
+    color: #333;
+    font-size: 14px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section li {
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.footer-section li:hover {
+    color: #911825;
+    transform: translateX(5px);
+}
+
+.social-icons {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+    font-size: 18px;
+}
+
+.social-icons svg {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.social-icons svg:hover {
+    color: #911825;
+    transform: scale(1.2);
+}
+
+.footer-bottom {
+    background-color: #911825;
+    color: #ffffff;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+    width: 100%;
+}
 
 
 
