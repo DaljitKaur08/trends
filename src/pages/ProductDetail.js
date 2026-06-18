@@ -28,7 +28,6 @@ function ProductDetail() {
                 const data = res.data;
                 setProduct(data);
 
-                // fetch similar products (same category)
                 axios.get(`https://fakestoreapi.com/products/category/${data.category}`)
                     .then(simRes => {
 
@@ -47,7 +46,6 @@ function ProductDetail() {
 
     }, [id, navigate]);
 
-    // add to cart
     function addToCart() {
 
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -76,7 +74,8 @@ function ProductDetail() {
     }
 
     return (
-        <div className="product-detail">
+        <div className="product-detail container">
+
             <div className="detail-container">
 
                 <img
@@ -89,6 +88,14 @@ function ProductDetail() {
 
                     <h2>{product.title}</h2>
 
+                    <p className="product-category">
+                        Category: {product.category}
+                    </p>
+
+                    <p className="product-rating">
+                        Rating: {product.rating.rate} ⭐
+                    </p>
+
                     <p>{product.description}</p>
 
                     <h3>${product.price}</h3>
@@ -99,7 +106,9 @@ function ProductDetail() {
                             -
                         </button>
 
-                        <span style={{ margin: "0 10px" }}>{qty}</span>
+                        <span style={{ margin: "0 10px" }}>
+                            {qty}
+                        </span>
 
                         <button onClick={() => setQty(qty + 1)}>
                             +
@@ -112,6 +121,7 @@ function ProductDetail() {
                     </button>
 
                 </div>
+
             </div>
 
             <h3 style={{ marginTop: "30px" }}>
@@ -128,7 +138,10 @@ function ProductDetail() {
                         style={{ cursor: "pointer" }}
                     >
 
-                        <img src={item.image} alt={item.title} />
+                        <img
+                            src={item.image}
+                            alt={item.title}
+                        />
 
                         <p>{item.title.slice(0, 40)}...</p>
 
