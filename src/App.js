@@ -1,5 +1,5 @@
 import Header from './components/Header';
-
+import ProductDetail from './pages/ProductDetail';
 import Home from './pages/Home';
 import Product from './pages/Product';
 import Cart from './pages/Cart';
@@ -20,6 +20,8 @@ function App() {
                         <Route path='/' element={<Home />} />
 
                         <Route path='/product' element={<Product />} />
+
+                        <Route path='/product/:id' element={<ProductDetail />} />
 
                         <Route path='/cart' element={<Cart />} />
 
