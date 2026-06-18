@@ -1,82 +1,128 @@
 import { useState, useEffect } from "react";
 
 function Cart() {
-  const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState([]);
 
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("cart")) || [];
-    setCart(data);
-  }, []);
+    useEffect(() => {
+        const data = JSON.parse(localStorage.getItem("cart")) || [];
+        setCart(data);
+    }, []);
 
-  function updateQty(id, delta) {
-    const updated = cart.map(item =>
-      item.id === id
-        ? { ...item, quantity: Math.max(1, item.quantity + delta) }
-        : item
+    function updateQty(id, delta) {
+        const updated = cart.map(item =>
+            item.id === id
+                ? {
+                      ...item,
+                      quantity: Math.max(1, item.quantity + delta)
+                  }
+                : item
+        );
+
+        setCart(updated);
+        localStorage.setItem("cart", JSON.stringify(updated));
+    }
+
+    function removeItem(id) {
+        const updated = cart.filter(item => item.id !== id);
+
+        setCart(updated);
+        localStorage.setItem("cart", JSON.stringify(updated));
+    }
+
+    const total = cart.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0
     );
 
-    setCart(updated);
-    localStorage.setItem("cart", JSON.stringify(updated));
-  }
+    return (
+        <section className="cart-page container">
 
-  function removeItem(id) {
-    const updated = cart.filter(item => item.id !== id);
-    setCart(updated);
-    localStorage.setItem("cart", JSON.stringify(updated));
-  }
+            <h2 className="cart-title">Your Shopping Cart</h2>
 
-  const total = cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
+            {cart.length === 0 ? (
+                <p className="empty-cart">
+                    Your cart is empty. Start shopping now.
+                </p>
+            ) : (
+                <div className="cart-layout">
 
-  return (
-    <section className="cart-page container">
+                    <div>
+                        {cart.map(item => (
+                            <div
+                                className="cart-item"
+                                key={item.id}
+                            >
 
-      <h2 className="cart-title">Your Shopping Cart</h2>
+                                <img
+                                    src={item.image}
+                                    alt={item.title}
+                                />
 
-      {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <div className="cart-layout">
+                                <div className="cart-info">
+                                    <h4>{item.title}</h4>
 
-          <div>
-            {cart.map(item => (
-              <div className="cart-item" key={item.id}>
+                                    <div className="cart-price">
+                                        $
+                                        {(item.price * item.quantity).toFixed(
+                                            2
+                                        )}
+                                    </div>
+                                </div>
 
-                <img src={item.image} alt={item.title} />
+                                <div className="qty-box">
+                                    <button
+                                        onClick={() =>
+                                            updateQty(item.id, -1)
+                                        }
+                                    >
+                                        -
+                                    </button>
 
-                <div className="cart-info">
-                  <h4>{item.title}</h4>
-                  <div className="cart-price">${item.price}</div>
+                                    <span>{item.quantity}</span>
+
+                                    <button
+                                        onClick={() =>
+                                            updateQty(item.id, 1)
+                                        }
+                                    >
+                                        +
+                                    </button>
+                                </div>
+
+                                <button
+                                    className="btn btn-danger"
+                                    onClick={() =>
+                                        removeItem(item.id)
+                                    }
+                                >
+                                    Remove
+                                </button>
+
+                            </div>
+                        ))}
+                    </div>
+
+                    <aside className="summary">
+
+                        <h3>Order Summary</h3>
+
+                        <p>Items: {cart.length}</p>
+
+                        <p>
+                            Total: $
+                            {total.toFixed(2)}
+                        </p>
+
+                        <button className="btn btn-primary">
+                            Checkout
+                        </button>
+
+                    </aside>
+
                 </div>
-
-                <div className="qty-box">
-                  <button onClick={() => updateQty(item.id, -1)}>-</button>
-                  <span>{item.quantity}</span>
-                  <button onClick={() => updateQty(item.id, 1)}>+</button>
-                </div>
-
-                <button
-                  className="btn btn-danger"
-                  onClick={() => removeItem(item.id)}
-                >
-                  Remove
-                </button>
-
-              </div>
-            ))}
-          </div>
-
-          <aside className="summary">
-            <h3>Order Summary</h3>
-            <p>Total: ${total.toFixed(2)}</p>
-            <button className="btn btn-primary">
-              Checkout
-            </button>
-          </aside>
-
-        </div>
-      )}
-    </section>
-  );
+            )}
+        </section>
+    );
 }
 
 export default Cart;
