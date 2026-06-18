@@ -119,105 +119,147 @@ button:hover,
 /* product detail page */
 
 .product-detail {
-    padding: 20px;
+    padding: 40px 40px;
+    background: linear-gradient(135deg, #911825, #ef7781);
+    border-radius: 20px;
 }
-
-/* Main container */
 .detail-container {
     display: flex;
-    gap: 30px;
-    align-items: flex-start;
-    margin-top: 20px;
+    gap: 60px;
+    align-items: center;
+    padding: 50px 40px;
+    background: #f4f4f2;
+    border-radius: 16px;
 }
 
-/* Product image */
 .detail-img {
-    width: 300px;
-    height: auto;
+    width: 420px;
+    height: 420px;
     object-fit: contain;
-    border: 1px solid #eee;
-    padding: 10px;
-    border-radius: 8px;
-    background: #fff;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    transition: transform 0.4s ease;
 }
 
-/* Right side info */
+.detail-img:hover {
+    transform: scale(1.03);
+}
+
 .detail-info {
     flex: 1;
 }
 
 .detail-info h2 {
-    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 12px;
+    letter-spacing: 0.3px;
 }
 
 .detail-info p {
-    margin-bottom: 15px;
-    color: #444;
-    line-height: 1.5;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 20px;
+    max-width: 500px;
 }
 
 .detail-info h3 {
-    font-size: 22px;
-    margin-bottom: 15px;
-    color: #2c3e50;
+    font-size: 26px;
+    color: #911825;
+    font-weight: 700;
+    margin-bottom: 25px;
 }
 
-/* Quantity buttons */
-.detail-info button {
-    padding: 8px 12px;
-    margin-right: 5px;
-    border: none;
+.detail-info div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.detail-info div button {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #111;
+    font-size: 18px;
     cursor: pointer;
-    background: #222;
-    color: white;
-    border-radius: 4px;
+    transition: 0.25s ease;
 }
 
-.detail-info button:hover {
-    background: #444;
+.detail-info div button:hover {
+    border-color: #911825;
+    color: #911825;
 }
 
-/* Add to cart button */
-.detail-info button:last-of-type {
+.detail-info span {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.detail-info > button {
     margin-top: 10px;
-    background: #27ae60;
+    padding: 14px 26px;
+    width: 100%;
+    background: #911825;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
-.detail-info button:last-of-type:hover {
-    background: #219150;
+.detail-info > button:hover {
+    background: #6f1018;
+    transform: translateY(-2px);
 }
-
-
 
 .similar-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 15px;
-    margin-top: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
 }
 
 .similar-card {
-    border: 1px solid #eee;
-    padding: 10px;
-    border-radius: 8px;
-    text-align: center;
     background: #fff;
-    transition: 0.2s ease;
+    border: 1px solid #eee;
+    border-radius: 14px;
+    padding: 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
 .similar-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    border-color: #f0d0d4;
 }
 
 .similar-card img {
     width: 100%;
-    height: 120px;
+    height: 180px;
     object-fit: contain;
+    background: #f4f4f2;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 12px;
 }
 
 .similar-card p {
-    font-size: 13px;
-    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+    margin: 6px 0;
 }
 
 .footer {
@@ -243,6 +285,7 @@ button:hover,
 
 .logo {
     color: #911825;
+    font-family: 'Poppins', sans-serif;
     font-size: 28px;
     margin-bottom: 15px;
 }
