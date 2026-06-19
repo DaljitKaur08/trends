@@ -124,33 +124,70 @@ function ProductDetail() {
 
             </div>
 
-            <h3 style={{ marginTop: "30px" }}>
-                Similar Products
-            </h3>
+          <div className="similar-products">
 
-            <div className="similar-grid">
+    <h2>You Might Also Like</h2>
 
-                {similar.map(item => (
-                    <div
-                        key={item.id}
-                        className="similar-card"
-                        onClick={() => navigate(`/product/${item.id}`)}
-                        style={{ cursor: "pointer" }}
-                    >
+    <div className="similar-grid">
 
-                        <img
-                            src={item.image}
-                            alt={item.title}
-                        />
+        {similar.map(item => (
 
-                        <p>{item.title.slice(0, 40)}...</p>
+            <div
+                key={item.id}
+                className="similar-card"
+                onClick={() =>
+                    navigate(`/product/${item.id}`)
+                }
+            >
 
-                        <p>${item.price}</p>
+                <img
+                    src={item.image}
+                    alt={item.title}
+                />
+
+                <div className="similar-info">
+
+                    <p className="similar-category">
+                        {item.category}
+                    </p>
+
+                    <h3 className="similar-title">
+                        {item.title.length > 40
+                            ? item.title.slice(0, 40) + "..."
+                            : item.title}
+                    </h3>
+
+                    <p className="similar-price">
+                        ${item.price}
+                    </p>
+
+                    <div className="similar-bottom">
+
+                        <span className="similar-rating">
+                            ⭐ {item.rating?.rate}
+                        </span>
+
+                        <button
+                            className="similar-btn"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                navigate(`/product/${item.id}`);
+                            }}
+                        >
+                            View
+                        </button>
 
                     </div>
-                ))}
+
+                </div>
 
             </div>
+
+        ))}
+
+    </div>
+
+</div>
 
         </div>
     );

@@ -59,10 +59,12 @@
     width:100%;
     height:55px;
     border:none;
-    background:black;
+    background:#9b111e;
     color:white;
     font-size:18px;
+    font-weight:600;
     cursor:pointer;
+    border-radius:6px;
 }
 
 .back-link{
@@ -89,6 +91,17 @@
     display:flex;
     justify-content:space-between;
     margin:15px 0;
+}
+.checkout-form h2{
+    font-size:32px;
+    font-weight:700;
+    margin-bottom:25px;
+}
+
+.checkout-summary h2{
+    font-size:32px;
+    font-weight:700;
+    margin-bottom:25px;
 }
 
 @media(max-width:768px){
