@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/trends/static/css/main.7d0295c8.css",
+    "main.js": "/trends/static/js/main.ed4ce64d.js",
+    "static/media/footerlogo.png": "/trends/static/media/footerlogo.92c3a73786319b291d6a.png",
+    "index.html": "/trends/index.html",
+    "main.7d0295c8.css.map": "/trends/static/css/main.7d0295c8.css.map",
+    "main.ed4ce64d.js.map": "/trends/static/js/main.ed4ce64d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7d0295c8.css",
+    "static/js/main.ed4ce64d.js"
+  ]
+}
