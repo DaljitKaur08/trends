@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function ProductDetail() {
 
@@ -17,18 +17,21 @@ function ProductDetail() {
         setSimilar([]);
         setQty(1);
 
-        axios.get(`https://fakestoreapi.com/products/${id}`)
+        axios
+            .get(`https://fakestoreapi.com/products/${id}`)
             .then(res => {
 
-                if (!res.data || res.data === "") {
-                    navigate('/');
+                // FIX 1: invalid product
+                if (!res.data || !res.data.id) {
+                    navigate("/notfound");
                     return;
                 }
 
                 const data = res.data;
                 setProduct(data);
 
-                axios.get(`https://fakestoreapi.com/products/category/${data.category}`)
+                axios
+                    .get(`https://fakestoreapi.com/products/category/${data.category}`)
                     .then(simRes => {
 
                         const filtered = simRes.data
@@ -41,19 +44,19 @@ function ProductDetail() {
             })
             .catch(err => {
                 console.log(err);
-                navigate('/');
+                navigate("/notfound"); // FIX 2
             });
 
     }, [id, navigate]);
 
     function addToCart() {
 
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-        const existingItem = cart.find(item => item.id === product.id);
+        const existing = cart.find(item => item.id === product.id);
 
-        if (existingItem) {
-            existingItem.quantity += qty;
+        if (existing) {
+            existing.quantity += qty;
         } else {
             cart.push({
                 id: product.id,
@@ -64,9 +67,8 @@ function ProductDetail() {
             });
         }
 
-        localStorage.setItem('cart', JSON.stringify(cart));
-
-        alert('Added to Cart');
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert("Added to Cart");
     }
 
     if (!product) {
@@ -78,42 +80,24 @@ function ProductDetail() {
 
             <div className="detail-container">
 
-                <img
-                    src={product.image}
-                    alt={product.title}
-                    className="detail-img"
-                />
+                <img src={product.image} alt={product.title} className="detail-img" />
 
                 <div className="detail-info">
 
                     <h2>{product.title}</h2>
 
-                    <p className="product-category">
-                        Category: {product.category}
-                    </p>
+                    <p>Category: {product.category}</p>
 
-                    <p className="product-rating">
-                        Rating: {product.rating.rate} ⭐
-                    </p>
+                    <p>Rating: {product.rating?.rate} ⭐</p>
 
                     <p>{product.description}</p>
 
                     <h3>${product.price}</h3>
 
-                    <div style={{ margin: "10px 0" }}>
-
-                        <button onClick={() => setQty(qty > 1 ? qty - 1 : 1)}>
-                            -
-                        </button>
-
-                        <span style={{ margin: "0 10px" }}>
-                            {qty}
-                        </span>
-
-                        <button onClick={() => setQty(qty + 1)}>
-                            +
-                        </button>
-
+                    <div>
+                        <button onClick={() => setQty(qty > 1 ? qty - 1 : 1)}>-</button>
+                        <span>{qty}</span>
+                        <button onClick={() => setQty(qty + 1)}>+</button>
                     </div>
 
                     <button onClick={addToCart}>
@@ -123,71 +107,6 @@ function ProductDetail() {
                 </div>
 
             </div>
-
-          <div className="similar-products">
-
-    <h2>You Might Also Like</h2>
-
-    <div className="similar-grid">
-
-        {similar.map(item => (
-
-            <div
-                key={item.id}
-                className="similar-card"
-                onClick={() =>
-                    navigate(`/product/${item.id}`)
-                }
-            >
-
-                <img
-                    src={item.image}
-                    alt={item.title}
-                />
-
-                <div className="similar-info">
-
-                    <p className="similar-category">
-                        {item.category}
-                    </p>
-
-                    <h3 className="similar-title">
-                        {item.title.length > 40
-                            ? item.title.slice(0, 40) + "..."
-                            : item.title}
-                    </h3>
-
-                    <p className="similar-price">
-                        ${item.price}
-                    </p>
-
-                    <div className="similar-bottom">
-
-                        <span className="similar-rating">
-                            ⭐ {item.rating?.rate}
-                        </span>
-
-                        <button
-                            className="similar-btn"
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                navigate(`/product/${item.id}`);
-                            }}
-                        >
-                            View
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        ))}
-
-    </div>
-
-</div>
 
         </div>
     );

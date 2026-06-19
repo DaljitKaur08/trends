@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
 
@@ -17,22 +17,28 @@ function Header() {
         };
 
         updateCartCount();
+
         window.addEventListener("cartUpdated", updateCartCount);
 
-        return () =>
+        return () => {
             window.removeEventListener("cartUpdated", updateCartCount);
+        };
 
     }, []);
 
     return (
         <header className="header">
 
-            {/* LEFT - LOGO */}
-            <div className="logo-section" onClick={() => navigate("/")}>
+            {/* LOGO */}
+            <div
+                className="logo-section"
+                onClick={() => navigate("/")}
+                style={{ cursor: "pointer" }}
+            >
                 <img src="/images/logo.png" alt="logo" />
             </div>
 
-            {/* CENTER - NAV */}
+            {/* NAV LINKS */}
             <nav className="nav-links">
 
                 <Link to="/">Home</Link>
@@ -43,14 +49,22 @@ function Header() {
 
             </nav>
 
-            {/* RIGHT - ICONS */}
+            {/* RIGHT ICONS */}
             <div className="header-right">
 
-                <i className="fa-solid fa-magnifying-glass"></i>
+                {/* SEARCH ICON (FIXED) */}
+                <i
+                    className="fa-solid fa-magnifying-glass"
+                    onClick={() => navigate("/product")}
+                    style={{ cursor: "pointer" }}
+                ></i>
 
                 <i className="fa-regular fa-user"></i>
 
-                <div className="cart-link" onClick={() => navigate("/cart")}>
+                <div
+                    className="cart-link"
+                    onClick={() => navigate("/cart")}
+                >
                     <i className="fa-solid fa-bag-shopping"></i>
 
                     {cartCount > 0 && (

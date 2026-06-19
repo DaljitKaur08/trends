@@ -22,35 +22,15 @@ function App() {
 
                     <Routes>
 
-                        <Route
-                            path="/"
-                            element={<Home />}
-                        />
+                        <Route path="/" element={<Home />} />
+                        <Route path="/product" element={<Product />} />
+                        <Route path="/product/:id" element={<ProductDetail />} />
+                        <Route path="/cart" element={<Cart />} />
+                        <Route path="/checkout" element={<Checkout />} />
 
-                        <Route
-                            path="/product"
-                            element={<Product />}
-                        />
-
-                        <Route
-                            path="/product/:id"
-                            element={<ProductDetail />}
-                        />
-
-                        <Route
-                            path="/cart"
-                            element={<Cart />}
-                        />
-
-                        <Route
-                            path="/checkout"
-                            element={<Checkout />}
-                        />
-
-                        <Route
-                            path="*"
-                            element={<NotFound />}
-                        />
+                        {/* FIXED NOTFOUND ROUTING */}
+                        <Route path="/notfound" element={<NotFound />} />
+                        <Route path="*" element={<NotFound />} />
 
                     </Routes>
 
