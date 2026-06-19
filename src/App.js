@@ -1,12 +1,16 @@
-import Header from './components/Header';
+import Header from "./components/Header";
 import Footer from "./components/Footer";
-import ProductDetail from './pages/ProductDetail';
-import Home from './pages/Home';
-import Product from './pages/Product';
-import Cart from './pages/Cart';
-import NotFound from './pages/NotFound';
 
-import { Routes, Route } from 'react-router-dom';
+import Home from "./pages/Home";
+import Product from "./pages/Product";
+import ProductDetail from "./pages/ProductDetail";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+import NotFound from "./pages/NotFound";
+
+import "./css/cart.css";
+
+import { Routes, Route } from "react-router-dom";
 
 function App() {
     return (
@@ -18,22 +22,42 @@ function App() {
 
                     <Routes>
 
-                        <Route path='/' element={<Home />} />
+                        <Route
+                            path="/"
+                            element={<Home />}
+                        />
 
-                        <Route path='/product' element={<Product />} />
+                        <Route
+                            path="/product"
+                            element={<Product />}
+                        />
 
-                        <Route path='/product/:id' element={<ProductDetail />} />
+                        <Route
+                            path="/product/:id"
+                            element={<ProductDetail />}
+                        />
 
-                        <Route path='/cart' element={<Cart />} />
+                        <Route
+                            path="/cart"
+                            element={<Cart />}
+                        />
 
-                        <Route path='*' element={<NotFound />} />
+                        <Route
+                            path="/checkout"
+                            element={<Checkout />}
+                        />
+
+                        <Route
+                            path="*"
+                            element={<NotFound />}
+                        />
 
                     </Routes>
 
                 </div>
             </main>
 
-        <Footer />
+            <Footer />
         </>
     );
 }
