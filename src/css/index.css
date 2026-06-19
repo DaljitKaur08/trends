@@ -91,10 +91,36 @@ body {
     position: relative;
     padding-bottom: 4px;
 }
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 1.5px;
+    background: #fff;
+    transition: 0.3s;
+}
+
+.nav-links a:hover::after{
+    width: 100%;
+}
  
 .nav-links a:hover{
     color: whitesmoke;
-    font-weight: 650;
+}
+ 
+.nav-links a.active{
+    font-weight: 600;
+}
+ 
+.nav-links a.active::after{
+    width: 100%;
+}
+ 
+.nav-links a:hover{
+    color: whitesmoke;
 }
  
 .cart-link {
@@ -132,17 +158,17 @@ body {
 }
  
 .hero-banner {
-    width: 100%;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    height: 650px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 650px;
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    transition: background-size 1.5s ease;
+    position: relative;
 }
  
 .hero-content {
