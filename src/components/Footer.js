@@ -5,7 +5,16 @@ function Footer() {
             <div className="footer-container">
 
                 <div className="footer-section">
-                    <h2 className="logo">Trends</h2>
+
+                    <div className="footer-brand">
+                        <img
+                            src="/images/logo.png"
+                            alt="Trends Logo"
+                            className="footer-logo"
+                        />
+
+                        <h2 className="logo">Trends</h2>
+                    </div>
 
                     <p>123 Shopping Street</p>
                     <p>Winnipeg, Canada</p>
@@ -13,10 +22,12 @@ function Footer() {
                     <p>support@trends.com</p>
 
                     <div className="social-icons">
-                        <i className="fa-brands fa-facebook"></i>
-                        <i className="fa-brands fa-instagram"></i>
-                        <i className="fa-brands fa-x-twitter"></i>
+                        <i className="fab fa-facebook-f"></i>
+                        <i className="fab fa-instagram"></i>
+                        <i className="fab fa-twitter"></i>
+                        <i className="fab fa-youtube"></i>
                     </div>
+
                 </div>
 
                 <div className="footer-section">

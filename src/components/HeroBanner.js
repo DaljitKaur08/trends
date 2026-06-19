@@ -1,6 +1,15 @@
 import { motion } from "framer-motion";
 
 function HeroBanner() {
+
+    const scrollToProducts = () => {
+        document
+            .getElementById("products-section")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+    };
+
     return (
         <motion.section
             className="hero-banner"
@@ -8,9 +17,9 @@ function HeroBanner() {
                 backgroundImage:
                     "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('/images/herobanner.jpg')"
             }}
-            initial={{ opacity: 8 }}
-            animate={{ opacity: 6 }}
-            transition={{ duration: 1.0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
         >
             <div className="hero-content">
 
@@ -18,9 +27,12 @@ function HeroBanner() {
 
                 <p>Fashion That Defines You</p>
 
-                <button className="shop-btn">
-                    Shop Now
-                </button>
+                <button
+    className="shop-btn"
+    onClick={() => alert("clicked")}
+>
+    Shop Now
+</button>
 
             </div>
         </motion.section>

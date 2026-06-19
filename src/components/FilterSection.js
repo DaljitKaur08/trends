@@ -1,13 +1,38 @@
 function FilterSection(props) {
+
     return (
-        <section className="filter-section">
-            <select onChange={(e) => props.setCategory(e.target.value)}>
-                <option value="all">All Categories</option>
-                <option value="men's clothing">Men's Clothing</option>
-                <option value="women's clothing">Women's Clothing</option>
-                <option value="jewelery">Jewelry</option>
-                <option value="electronics">Electronics</option>
-            </select>
+        <section className="filter-section-buttons">
+
+            <button
+                onClick={() => props.setCategory("all")}
+            >
+                ALL
+            </button>
+
+            <button
+                onClick={() => props.setCategory("men's clothing")}
+            >
+                MEN'S CLOTHING
+            </button>
+
+            <button
+                onClick={() => props.setCategory("women's clothing")}
+            >
+                WOMEN'S CLOTHING
+            </button>
+
+            <button
+                onClick={() => props.setCategory("jewelery")}
+            >
+                JEWELRY
+            </button>
+
+            <button
+                onClick={() => props.setCategory("electronics")}
+            >
+                ELECTRONICS
+            </button>
+
         </section>
     );
 }

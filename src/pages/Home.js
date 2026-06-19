@@ -58,27 +58,39 @@ function Home() {
     }
 
     return (
-        <main className="home-page">
+    <main className="home-page">
 
-            <section className="hero-section">
-                <HeroBanner />
-            </section>
+        <HeroBanner />
 
-            <section className="products-section">
-                <div className="container">
+       <section
+    className="products-section"
+    id="products-section"
+>
 
-                    <div className="controls">
-                        <FilterSection setCategory={setCategory} />
-                        <SortSection setSort={setSort} />
-                    </div>
+    <div className="container">
 
-                    <ProductGrid products={displayProducts} />
+        <div className="controls">
 
-                </div>
-            </section>
+            <FilterSection
+                setCategory={setCategory}
+            />
 
-        </main>
-    );
+            <SortSection
+                setSort={setSort}
+            />
+
+        </div>
+
+        <ProductGrid
+            products={displayProducts}
+        />
+
+    </div>
+
+</section>
+
+    </main>
+);
 }
 
 export default Home;

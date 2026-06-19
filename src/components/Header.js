@@ -36,35 +36,38 @@ function Header() {
     }, []);
 
     return (
-        <header>
-            <nav>
-                <ul>
-                    <li>
-                        <NavLink to="/">
-                            Home
-                        </NavLink>
-                    </li>
+    <header className="header">
 
-                    <li>
-                        <NavLink
-                            className={({ isActive }) =>
-                                isActive ? "active" : ""
-                            }
-                            to="/product"
-                        >
-                            Product
-                        </NavLink>
-                    </li>
+        <div className="logo-section">
+            <img
+                src="/images/logo.png"
+                alt="Trends Logo"
+            />
+        </div>
 
-                    <li>
-                        <NavLink to="/cart">
-                            Cart ({cartCount})
-                        </NavLink>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-    );
+        <nav className="nav-links">
+
+            <NavLink to="/">
+                Home
+            </NavLink>
+
+            <NavLink to="/product">
+                Product
+            </NavLink>
+
+        </nav>
+
+        <div className="cart-link">
+
+           <NavLink to="/cart">
+    <i className="fa-solid fa-cart-shopping"></i>
+    {" "}Cart ({cartCount})
+</NavLink>
+
+        </div>
+
+    </header>
+);
 }
 
 export default Header;
