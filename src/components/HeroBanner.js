@@ -28,11 +28,11 @@ function HeroBanner() {
                 <p>Fashion That Defines You</p>
 
                 <button
-    className="shop-btn"
-    onClick={() => alert("clicked")}
->
-    Shop Now
-</button>
+                    className="shop-btn"
+                    onClick={() => alert("clicked")}
+                >
+                    Shop Now
+                </button>
 
             </div>
         </motion.section>
