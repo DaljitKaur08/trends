@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 function Header() {
 
@@ -35,13 +35,11 @@ function Header() {
             {/* CENTER - NAV */}
             <nav className="nav-links">
 
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/summer">Summer Collection</NavLink>
-                <NavLink to="/men">Men</NavLink>
-                <NavLink to="/women">Women</NavLink>
-                <NavLink to="/kids">Kids</NavLink>
-                <NavLink to="/shoes">Accessories</NavLink>
-                <NavLink to="/jeans">Trends Jeans</NavLink>
+                <Link to="/">Home</Link>
+                <Link to="/product">Products</Link>
+                <Link to="/product?category=men's clothing">Men</Link>
+                <Link to="/product?category=women's clothing">Women</Link>
+                <Link to="/product?category=jewelery">Accessories</Link>
 
             </nav>
 
