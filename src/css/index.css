@@ -1,6 +1,5 @@
-/* =========================
-   GLOBAL
-========================= */
+@charset "utf-8";
+@import './reset.css';
 
 * {
     margin: 0;
@@ -13,81 +12,147 @@ body {
     color: #222;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
-     padding-top: 80px;
+    /*  */
 }
 
 .container {
     width: 92%;
     max-width: 1400px;
     margin: auto;
+    margin-top: 50px;
 }
-/* =========================
-   HEADER
-========================= */
 
-.header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-
-    background: white;
-
-    height: 80px;
-
+.header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-
-    padding: 0 50px;
-
-    border-bottom: 1px solid #e5e5e5;
-
-    z-index: 999;
+    justify-content: space-between;
+    padding: 28px 100px;
+    background: #911825;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.logo-section img{
-    height: 40px;
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.header-right i {
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.header-right i:hover {
+    opacity: 0.7;
+}
+
+.language {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cart-link {
+    position: relative;
+    cursor: pointer;
+}
+
+.logo-section img {
     width: 60px;
+    height: 40px;
+    object-fit: contain;
     background: black;
     padding: 4px;
     border-radius: 6px;
 }
 
+.logo-section img:hover{
+    transform: scale(1.05);
+}
+
 .nav-links {
     display: flex;
-    gap: 40px;
+    align-items: center;
+    gap: 50px;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: #222;
-    font-size: 16px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 1.5px;
+    background: #fff;
+    transition: 0.3s;
+}
+
+.nav-links a:hover::after{
+    width: 100%;
+}
+
+.nav-links a:hover{
+    color: whitesmoke;
+}
+
+.nav-links a.active{
     font-weight: 600;
 }
 
-.nav-links a:hover {
-    color: #9d1124;
+.nav-links a.active::after{
+    width: 100%;
 }
 
-.cart-link a{
-    text-decoration: none;
-    color: #222;
-    font-size: 18px;
-    font-weight: 600;
+.cart-link {
+    position: relative;
+}
 
+.cart-link a {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
 }
 
 .cart-link a:hover{
-    color: #9d1124;
+    background: #9d1124;
+    color: #fff;
 }
 
-/* =========================
-   HERO BANNER
-========================= */
+.cart-link i{
+    font-size: 18px;
+}
+
+.cart-count {
+    background: #9d1124;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 7px;
+    border-radius: 50%;
+    position: absolute;
+    top: -6px;
+    right: -10px;
+}
 
 .hero-banner {
     width: 100%;
@@ -95,26 +160,22 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     height: 650px;
-     position: relative;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-
     text-align: center;
-
     transition: background-size 1.5s ease;
 }
-
-
 
 .hero-content {
     color: white;
     text-align: center;
     max-width: 700px;
     padding: 20px;
-
     text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
 }
+
 .hero-content h1,
 .hero-content h2 {
     font-size: 72px;
@@ -128,8 +189,6 @@ body {
     margin-bottom: 25px;
 }
 
-
-
 .shop-btn {
     background: white;
     color: #9d1124;
@@ -138,7 +197,6 @@ body {
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-
     transition: 0.3s;
 }
 
@@ -147,17 +205,11 @@ body {
     color: white;
 }
 
-/* =========================
-   FILTER + SORT
-========================= */
-
 .controls {
     display: flex;
     justify-content: center;
     align-items: center;
-
     gap: 25px;
-
     margin-top: 50px;
     margin-bottom: 25px;
 }
@@ -165,15 +217,9 @@ body {
 select{
     width: 260px;
     height: 55px;
-
     font-size: 17px;
-
     border-radius: 6px;
 }
-
-/* =========================
-   PRODUCT GRID
-========================= */
 
 .product-grid {
     display: grid;
@@ -183,24 +229,16 @@ select{
     margin-bottom: 60px;
 }
 
-/* =========================
-   PRODUCT CARD
-========================= */
-
 .product-card {
     background: white;
     border: 1px solid #eee;
     border-radius: 20px;
-
     width: 300px;
     height: 500px;
-
     padding: 20px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     transition: all 0.3s ease;
 }
 
@@ -209,66 +247,42 @@ select{
     box-shadow: 0 12px 30px rgba(0,0,0,0.12);
 }
 
-
-
-
-
-
-
-
 .product-card img {
     width: 100%;
     height: 180px;
     object-fit: contain;
 }
 
-
 .product-card h3 {
     font-size: 16px;
     text-align: center;
     line-height: 1.5;
-
     height: 100px;
     overflow: hidden;
-
     margin-top: 15px;
 }
-
-
 
 .product-card p {
     color: #9d1124;
     font-size: 18px;
     font-weight: bold;
-
     margin-top: auto;
     margin-bottom: 20px;
 }
 
-
-
 .product-card button {
     width: 140px;
-
     background: #9d1124;
     color: white;
-
     border: none;
     border-radius: 5px;
-
     padding: 12px;
-
     cursor: pointer;
 }
-
 
 .product-card button:hover {
     background: #7f0e1d;
 }
-
-/* =========================
-   PRODUCT DETAIL
-========================= */
 
 .detail-container {
     display: flex;
@@ -276,15 +290,14 @@ select{
     margin-top: 50px;
 }
 
-/* CATEGORY BUTTONS */
-
 .filter-section-buttons {
     display: flex;
     justify-content: center;
-    align-items: center; /* important */
+    align-items: center;
     gap: 15px;
     margin: 50px 0;
 }
+
 .filter-btn {
     height: 60px;
     padding: 0 30px;
@@ -293,14 +306,10 @@ select{
 .filter-section-buttons button {
     background: white;
     border: 1px solid #ccc;
-
     padding: 16px 30px;
-
     font-size: 16px;
     font-weight: 600;
-
     cursor: pointer;
-
     transition: 0.3s;
 }
 
@@ -309,13 +318,13 @@ select{
     color: white;
 }
 
-/* product detail page */
-
 .product-detail {
     padding: 40px 40px;
     background: linear-gradient(135deg, #911825, #ef7781);
     border-radius: 20px;
+    margin-top: 70px;
 }
+
 .detail-container {
     display: flex;
     gap: 60px;
@@ -454,21 +463,17 @@ select{
     color: #333;
     margin: 6px 0;
 }
-/* =========================
-   FOOTER
-========================= */
 
 .footer {
     background-image: url("/public/images/footerlogo.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     margin-top: 80px;
     padding-top: 60px;
-
     position: relative;
 }
+
 .footer::before {
     content: "";
     position: absolute;
@@ -485,13 +490,10 @@ select{
 .footer-container {
     max-width: 1200px;
     margin: auto;
-
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-
     gap: 50px;
-
     border-bottom: 1px solid #d5d5d5;
     padding-bottom: 40px;
 }
@@ -561,6 +563,7 @@ select{
     padding: 20px;
     margin-top: 0;
 }
+
 .footer-brand {
     display: flex;
     align-items: center;
@@ -579,4 +582,61 @@ select{
     font-size: 32px;
     font-weight: bold;
     margin: 0;
+}
+
+@media (max-width: 1024px) {
+    .header {
+        padding: 16px 30px;
+    }
+
+    .nav-links {
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 14px 20px;
+    }
+
+    .logo-section img {
+        height: 34px;
+    }
+
+    .nav-links {
+        gap: 18px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .cart-text {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 12px 15px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    .logo-section img {
+        height: 30px;
+    }
+
+    .cart-count {
+        top: -5px;
+        right: -8px;
+        font-size: 10px;
+        padding: 2px 6px;
+    }
 }
