@@ -1,7 +1,6 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function ProductCard(props) {
-
     const navigate = useNavigate();
 
     function goToProduct() {
@@ -9,8 +8,8 @@ function ProductCard(props) {
     }
 
     function addToCart() {
-
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cart =
+            JSON.parse(localStorage.getItem("cart")) || [];
 
         const existingItem = cart.find(
             item => item.id === props.id
@@ -29,24 +28,26 @@ function ProductCard(props) {
         }
 
         localStorage.setItem(
-            'cart',
+            "cart",
             JSON.stringify(cart)
         );
 
-window.dispatchEvent(
-    new Event("cartUpdated")
-);    }
+        window.dispatchEvent(
+            new Event("cartUpdated")
+        );
+    }
 
     return (
         <div className="product-card">
-
-            {/* CLICKABLE AREA → goes to product detail page */}
-            <div onClick={goToProduct} style={{ cursor: 'pointer' }}>
-
-                <img src={props.image} alt={props.title} />
-
+            <div
+                onClick={goToProduct}
+                style={{ cursor: "pointer" }}
+            >
+                <img
+                    src={props.image}
+                    alt={props.title}
+                />
                 <h3>{props.title}</h3>
-
             </div>
 
             <p>${props.price}</p>
@@ -54,7 +55,6 @@ window.dispatchEvent(
             <button onClick={addToCart}>
                 Add To Cart
             </button>
-
         </div>
     );
 }

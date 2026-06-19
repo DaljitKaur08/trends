@@ -2,34 +2,30 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
-
     const [cartCount, setCartCount] = useState(0);
     const navigate = useNavigate();
 
     useEffect(() => {
-
         const updateCartCount = () => {
             const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
             setCartCount(
                 cart.reduce((sum, item) => sum + item.quantity, 0)
             );
         };
 
         updateCartCount();
-
         window.addEventListener("cartUpdated", updateCartCount);
 
-        return () => {
-            window.removeEventListener("cartUpdated", updateCartCount);
-        };
-
+        return () =>
+            window.removeEventListener(
+                "cartUpdated",
+                updateCartCount
+            );
     }, []);
 
     return (
         <header className="header">
 
-            {/* LOGO */}
             <div
                 className="logo-section"
                 onClick={() => navigate("/")}
@@ -38,21 +34,16 @@ function Header() {
                 <img src="/images/logo.png" alt="logo" />
             </div>
 
-            {/* NAV LINKS */}
             <nav className="nav-links">
-
                 <Link to="/">Home</Link>
                 <Link to="/product">Products</Link>
                 <Link to="/product?category=men's clothing">Men</Link>
                 <Link to="/product?category=women's clothing">Women</Link>
                 <Link to="/product?category=jewelery">Accessories</Link>
-
             </nav>
 
-            {/* RIGHT ICONS */}
             <div className="header-right">
 
-                {/* SEARCH ICON (FIXED) */}
                 <i
                     className="fa-solid fa-magnifying-glass"
                     onClick={() => navigate("/product")}

@@ -1,13 +1,10 @@
 import { motion } from "framer-motion";
 
 function HeroBanner() {
-
     const scrollToProducts = () => {
         document
             .getElementById("products-section")
-            .scrollIntoView({
-                behavior: "smooth"
-            });
+            .scrollIntoView({ behavior: "smooth" });
     };
 
     return (
@@ -22,18 +19,15 @@ function HeroBanner() {
             transition={{ duration: 1 }}
         >
             <div className="hero-content">
-
                 <h2>Trends</h2>
-
                 <p>Fashion That Defines You</p>
 
                 <button
                     className="shop-btn"
-                    onClick={() => alert("clicked")}
+                    onClick={scrollToProducts}
                 >
                     Shop Now
                 </button>
-
             </div>
         </motion.section>
     );

@@ -28,7 +28,7 @@ function App() {
                         <Route path="/cart" element={<Cart />} />
                         <Route path="/checkout" element={<Checkout />} />
 
-                        {/* FIXED NOTFOUND ROUTING */}
+                        
                         <Route path="/notfound" element={<NotFound />} />
                         <Route path="*" element={<NotFound />} />
 

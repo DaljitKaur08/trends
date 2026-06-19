@@ -12,7 +12,6 @@ body {
     color: #222;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
-    /*  */
 }
  
 .container {
@@ -107,9 +106,7 @@ body {
     width: 100%;
 }
  
-.nav-links a:hover{
-    color: whitesmoke;
-}
+
  
 .nav-links a.active{
     font-weight: 600;
@@ -119,13 +116,6 @@ body {
     width: 100%;
 }
  
-.nav-links a:hover{
-    color: whitesmoke;
-}
- 
-.cart-link {
-    position: relative;
-}
  
 .cart-link a {
     display: flex;
@@ -316,11 +306,6 @@ select{
     color:#666;
 }
  
-.detail-container {
-    display: flex;
-    gap: 40px;
-    margin-top: 50px;
-}
  
 .filter-section-buttons {
     display: flex;
@@ -645,12 +630,6 @@ select{
     object-fit: contain;
 }
  
-.logo {
-    color: #911825;
-    font-size: 32px;
-    font-weight: bold;
-    margin: 0;
-}
  
 @media (max-width: 1024px) {
     .header {

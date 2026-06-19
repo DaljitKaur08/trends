@@ -4,18 +4,16 @@ import { useLocation } from "react-router-dom";
 import ProductGrid from "../components/ProductGrid";
 
 function Product() {
-
     const [products, setProducts] = useState([]);
     const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(true);
 
     const location = useLocation();
-
-    const queryParams = new URLSearchParams(location.search);
-    const category = queryParams.get("category");
+    const category = new URLSearchParams(
+        location.search
+    ).get("category");
 
     useEffect(() => {
-
         setLoading(true);
 
         axios
@@ -28,7 +26,6 @@ function Product() {
                 console.log(err);
                 setLoading(false);
             });
-
     }, []);
 
     useEffect(() => {
@@ -42,13 +39,18 @@ function Product() {
         : products;
 
     if (search.trim() !== "") {
-
-        filteredProducts = filteredProducts.filter(product =>
-    product.title.toLowerCase().includes(search.toLowerCase()) ||
-    product.category.toLowerCase().includes(search.toLowerCase()) ||
-    product.description.toLowerCase().includes(search.toLowerCase())
-);
-
+        filteredProducts = filteredProducts.filter(
+            product =>
+                product.title
+                    .toLowerCase()
+                    .includes(search.toLowerCase()) ||
+                product.category
+                    .toLowerCase()
+                    .includes(search.toLowerCase()) ||
+                product.description
+                    .toLowerCase()
+                    .includes(search.toLowerCase())
+        );
     }
 
     return (
@@ -59,43 +61,30 @@ function Product() {
             </h2>
 
             <div className="search-wrapper">
-
                 <input
                     type="text"
                     placeholder="Search products..."
                     value={search}
-                    onChange={(e) =>
+                    onChange={e =>
                         setSearch(e.target.value)
                     }
                     className="search-box"
                 />
-
             </div>
 
             {loading ? (
-
                 <h3>Loading Products...</h3>
-
             ) : filteredProducts.length > 0 ? (
-
                 <ProductGrid
                     products={filteredProducts}
                 />
-
             ) : (
-
                 <div className="no-products">
-
-                    <h2>
-                        No Products Found
-                    </h2>
-
+                    <h2>No Products Found</h2>
                     <p>
                         Try different search keywords.
                     </p>
-
                 </div>
-
             )}
 
         </section>
