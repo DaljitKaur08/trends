@@ -1,73 +1,75 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Header() {
 
     const [cartCount, setCartCount] = useState(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
 
         const updateCartCount = () => {
-
-            const cart =
-                JSON.parse(localStorage.getItem("cart")) || [];
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
             setCartCount(
-                cart.reduce(
-                    (sum, item) => sum + item.quantity,
-                    0
-                )
+                cart.reduce((sum, item) => sum + item.quantity, 0)
             );
         };
 
         updateCartCount();
-
-        window.addEventListener(
-            "cartUpdated",
-            updateCartCount
-        );
+        window.addEventListener("cartUpdated", updateCartCount);
 
         return () =>
-            window.removeEventListener(
-                "cartUpdated",
-                updateCartCount
-            );
+            window.removeEventListener("cartUpdated", updateCartCount);
 
     }, []);
 
     return (
-    <header className="header">
+        <header className="header">
 
-        <div className="logo-section">
-            <img
-                src="/images/logo.png"
-                alt="Trends Logo"
-            />
-        </div>
+            {/* LEFT - LOGO */}
+            <div className="logo-section" onClick={() => navigate("/")}>
+                <img src="/images/logo.png" alt="logo" />
+            </div>
 
-        <nav className="nav-links">
+            {/* CENTER - NAV */}
+            <nav className="nav-links">
 
-            <NavLink to="/">
-                Home
-            </NavLink>
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/summer">Summer Collection</NavLink>
+                <NavLink to="/men">Men</NavLink>
+                <NavLink to="/women">Women</NavLink>
+                <NavLink to="/kids">Kids</NavLink>
+                <NavLink to="/shoes">Accessories</NavLink>
+                <NavLink to="/jeans">Trends Jeans</NavLink>
 
-            <NavLink to="/product">
-                Product
-            </NavLink>
+            </nav>
 
-        </nav>
+            {/* RIGHT - ICONS */}
+            <div className="header-right">
 
-        <div className="cart-link">
+                <i className="fa-solid fa-magnifying-glass"></i>
 
-           <NavLink to="/cart">
-    <i className="fa-solid fa-cart-shopping"></i>
-    {" "}Cart ({cartCount})
-</NavLink>
+                <i className="fa-regular fa-user"></i>
 
-        </div>
+                <div className="cart-link" onClick={() => navigate("/cart")}>
+                    <i className="fa-solid fa-bag-shopping"></i>
 
-    </header>
-);
+                    {cartCount > 0 && (
+                        <span className="cart-count">
+                            {cartCount}
+                        </span>
+                    )}
+                </div>
+
+                <div className="language">
+                    EN <i className="fa-solid fa-chevron-down"></i>
+                </div>
+
+            </div>
+
+        </header>
+    );
 }
 
 export default Header;
