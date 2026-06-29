@@ -29,7 +29,7 @@ This project is developed as part of a college assignment focusing on React rout
 ---
 
 ## Team 
-- ** Harpreet , Daljit , Harman **
+- **Harpreet , Daljit , Harman**
 
 ---
 ## Link :
